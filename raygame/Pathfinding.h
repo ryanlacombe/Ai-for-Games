@@ -18,8 +18,8 @@ namespace pathfinding
 		Vector2 position;
 
 		float gScore = 0.0f;
-		//## Add hScore ##//
-		//## Add fScore ##//
+		float hScore = 0.0f;
+		float fScore = gScore + hScore;
 		Node* previous = nullptr;
 
 		std::vector<Edge> connections;
