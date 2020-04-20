@@ -2,7 +2,7 @@
 #include "Behavior.h"
 #include "Object.h"
 
-class DrinkBehavior : Behavior
+class DrinkBehavior : public Behavior
 {
 public:
 	DrinkBehavior() {}

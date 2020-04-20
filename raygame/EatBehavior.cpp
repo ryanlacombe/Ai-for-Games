@@ -16,35 +16,39 @@ void EatBehavior::update(Agent* agent, float deltaTime)
 		return;
 	}
 
-	int savedDecay = agent->getHungerDecay();
-
-	//Get this agent's position
-	Vector2 pos = agent->getPosition();
-	//Get the position of the target agent
-	Vector2 targetPos = m_target->getPosition();
-
-	//Calculate the vector describing the direction to the target and normalize it
-	Vector2 direction = targetPos - pos;
-	direction = direction.normalize();
-	//Multiply the direction by the speed we want the agent to move
-	Vector2 force = direction * agent->getSpeed();
-	//Subtract the agent's current velocity from the result to get the force we need to apply
-	force = force - agent->getVelocity();
-
-	//Return the force
-	agent->addForce(force * deltaTime);
-
-	if (agent->getPosition() == m_target->getPosition())
+	else if (agent->getHunger() < (agent->m_startHunger / 2))
 	{
-		int hungerRefill = agent->getHunger();
-		//Temporarilly set the decay to 0
-		agent->setHungerDecay(0);
-		//While the current need is below the maximum
-		while (agent->getHunger() > agent->m_startHunger)
+		int savedDecay = agent->getHungerDecay();
+
+		//Get this agent's position
+		Vector2 pos = agent->getPosition();
+		//Get the position of the target agent
+		Vector2 targetPos = m_target->getPosition();
+
+		//Calculate the vector describing the direction to the target and normalize it
+		Vector2 direction = targetPos - pos;
+		direction = direction.normalize();
+		//Multiply the direction by the speed we want the agent to move
+		Vector2 force = direction * agent->getSpeed();
+		//Subtract the agent's current velocity from the result to get the force we need to apply
+		force = force - agent->getVelocity();
+
+		//Return the force
+		agent->addForce(force * deltaTime);
+
+		if (pos == targetPos)
 		{
-			hungerRefill++;
-			agent->setHunger(hungerRefill);
+			int hungerRefill = agent->getHunger();
+			//Temporarilly set the decay to 0
+			agent->setHungerDecay(0);
+			//While the current need is below the maximum
+			while (agent->getHunger() < agent->m_startHunger)
+			{
+				hungerRefill++;
+				agent->setHunger(hungerRefill);
+			}
+			agent->setHungerDecay(savedDecay);
 		}
-		agent->setHungerDecay(savedDecay);
+		return;
 	}
 }

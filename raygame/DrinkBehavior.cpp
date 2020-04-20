@@ -40,11 +40,13 @@ void DrinkBehavior::update(Agent* agent, float deltaTime)
 		//Temporarilly set the decay to 0
 		agent->setThirstDecay(0);
 		//While the current need is below the maximum
-		while (agent->getThirst() > agent->m_startThirst)
+		while (agent->getThirst() < agent->m_startThirst)
 		{
 			thirstRefill++;
 			agent->setThirst(thirstRefill);
 		}
 		agent->setThirstDecay(savedDecay);
 	}
+
+	return;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Behavior.h"
 
-class Condition : public Behavior
+class Condition
 {
 public:
 	Condition() {}

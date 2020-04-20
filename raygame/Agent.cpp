@@ -11,11 +11,12 @@ void Agent::update(float deltaTime)
 	}
 	//Add velocity times delta time to position
 	m_position += m_velocity * deltaTime;
+
 }
 
 void Agent::draw()
 {
-	DrawRectangle((int)m_position.x, (int)m_position.y, 100, 100, m_color);
+	DrawRectangle((int)m_position.x, (int)m_position.y, 50, 50, m_color);
 }
 
 void Agent::addBehavior(Behavior* behavior)

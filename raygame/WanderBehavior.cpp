@@ -3,11 +3,11 @@
 
 void WanderBehavior::update(Agent* agent, float deltaTime)
 {
-	if (agent->getHunger() < (agent->m_startHunger / 2) || agent->getThirst() < (agent->m_startThirst / 2) || agent->getSleep() < (agent->m_startSleep / 2) || agent->getSocial() < (agent->m_startSocial / 2)
+	/*if (agent->getHunger() < (agent->m_startHunger / 2) || agent->getThirst() < (agent->m_startThirst / 2) || agent->getSleep() < (agent->m_startSleep / 2) || agent->getSocial() < (agent->m_startSocial / 2)
 		|| agent->getEntertainment() < (agent->m_startEntertainment / 2))
 	{
 		return;
-	}
+	}*/
 
 	auto randVec = []() {
 		float randX = (float)rand() - ((float)RAND_MAX) / 2;
@@ -44,6 +44,10 @@ void WanderBehavior::update(Agent* agent, float deltaTime)
 	//Return the force
 	agent->addForce(force * deltaTime);
 
-	//Change color
-	agent->setColor(GREEN);
+	//Decays all needs by the set ratw
+	agent->setHunger((agent->getHunger() - agent->getHungerDecay()));
+	agent->setThirst((agent->getThirst() - agent->getThirstDecay()));
+	//m_sleep = m_sleep - m_sleepDecay;
+	////m_social -= m_socialDecay;
+	//m_entertainment = m_entertainment - m_entertainmentDecay;
 }

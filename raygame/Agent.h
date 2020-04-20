@@ -41,27 +41,27 @@ public:
 	Color getColor() { return m_color; }
 
 	//Need functions
-	int setHunger(int hunger) { m_hunger = hunger; }
+	void setHunger(int hunger) { m_hunger = hunger; }
 	int getHunger() { return m_hunger; }
-	int setThirst(int thirst) { m_thirst = thirst; }
+	void setThirst(int thirst) { m_thirst = thirst; }
 	int getThirst() { return m_thirst; }
-	int setSleep(int sleep) { m_sleep = sleep; }
+	void setSleep(int sleep) { m_sleep = sleep; }
 	int getSleep() { return m_sleep; }
-	int setSocial(int social) { m_social = social; }
+	void setSocial(int social) { m_social = social; }
 	int getSocial() { return m_social; }
-	int setEntertainment(int entertainment) { m_entertainment = entertainment; }
+	void setEntertainment(int entertainment) { m_entertainment = entertainment; }
 	int getEntertainment() { return m_entertainment; }
 
 	//Need Decay functions
-	int setHungerDecay(int hungerDecay) { m_hungerDecay = hungerDecay; }
+	void setHungerDecay(int hungerDecay) { m_hungerDecay = hungerDecay; }
 	int getHungerDecay() { return m_hungerDecay; }
-	int setThirstDecay(int thirstDecay) { m_thirstDecay = thirstDecay; }
+	void setThirstDecay(int thirstDecay) { m_thirstDecay = thirstDecay; }
 	int getThirstDecay() { return m_thirstDecay; }
-	int setSleepDecay(int sleepDecay) { m_sleepDecay = sleepDecay; }
+	void setSleepDecay(int sleepDecay) { m_sleepDecay = sleepDecay; }
 	int getSleepDecay() { return m_sleepDecay; }
-	int setSocialDecay(int socialDecay) { m_socialDecay = socialDecay; }
+	void setSocialDecay(int socialDecay) { m_socialDecay = socialDecay; }
 	int getSocialDecay() { return m_socialDecay; }
-	int setEntertainmentDecay(int entertainmentDecay) { m_entertainmentDecay = entertainmentDecay; }
+	void setEntertainmentDecay(int entertainmentDecay) { m_entertainmentDecay = entertainmentDecay; }
 	int getEntertainmentDecay() { return m_entertainmentDecay; }
 
 	//Intializes public variables
@@ -86,9 +86,9 @@ protected:
 	int m_sleep = m_startSleep;
 	int m_social = m_startSocial;
 	int m_entertainment = m_startEntertainment;
-	int m_hungerDecay = 5;
-	int m_thirstDecay = 5;
-	int m_sleepDecay = 5;
-	int m_socialDecay = 5;
-	int m_entertainmentDecay = 5;
+	int m_hungerDecay = 1;
+	int m_thirstDecay = 1;
+	int m_sleepDecay = 1;
+	int m_socialDecay = 1;
+	int m_entertainmentDecay = 1;
 };

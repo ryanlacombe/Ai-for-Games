@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ScreenEdgeBehavior.cpp" />
     <ClCompile Include="SleepBehavior.cpp" />
     <ClCompile Include="SocialBehavior.cpp" />
     <ClCompile Include="WanderBehavior.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="IsNeedyCondition.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ScreenEdgeBehavior.h" />
     <ClInclude Include="SleepBehavior.h" />
     <ClInclude Include="SocialBehavior.h" />
     <ClInclude Include="WanderBehavior.h" />

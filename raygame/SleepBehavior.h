@@ -2,7 +2,7 @@
 #include "Behavior.h"
 #include "Object.h"
 
-class SleepBehavior : Behavior
+class SleepBehavior : public Behavior
 {
 public:
 	SleepBehavior() {}

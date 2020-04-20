@@ -5,7 +5,7 @@ class IsNeedyCondition : public Condition
 {
 public:
 
-	IsNeedyCondition(Agent* agentCheck, float range) { m_agentCheck = agentCheck, m_range = range; }
+	IsNeedyCondition(Agent* agentCheck) { m_agentCheck = agentCheck; }
 
 	virtual ~IsNeedyCondition() {}
 

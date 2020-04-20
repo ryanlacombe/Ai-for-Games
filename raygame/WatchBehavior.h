@@ -2,7 +2,7 @@
 #include "Behavior.h"
 #include "Object.h"
 
-class WatchBehavior : Behavior
+class WatchBehavior : public Behavior
 {
 public:
 	WatchBehavior() {}
