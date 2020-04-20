@@ -7,7 +7,11 @@ class Behavior;
 class Agent
 {
 public:
-	Agent(int startHunger) { m_startHunger = startHunger; }
+	Agent(int startHunger, int startThirst, int startSleep, int startSocial, int startEntertainment) 
+	{
+		m_startHunger = startHunger, m_startThirst = startThirst, m_startSleep = startSleep,
+			m_startSocial = m_startSocial, m_startEntertainment = startEntertainment;
+	}
 	virtual ~Agent() {}
 
 	//Update the agent and its behaviors
@@ -81,7 +85,7 @@ protected:
 	int m_thirst = m_startThirst;
 	int m_sleep = m_startSleep;
 	int m_social = m_startSocial;
-	int m_entertainment = m_startEntertianment;
+	int m_entertainment = m_startEntertainment;
 	int m_hungerDecay = 5;
 	int m_thirstDecay = 5;
 	int m_sleepDecay = 5;

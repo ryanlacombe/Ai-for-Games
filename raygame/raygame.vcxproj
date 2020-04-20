@@ -145,6 +145,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="SleepBehavior.cpp" />
     <ClCompile Include="SocialBehavior.cpp" />
+    <ClCompile Include="WanderBehavior.cpp" />
     <ClCompile Include="WatchBehavior.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="SleepBehavior.h" />
     <ClInclude Include="SocialBehavior.h" />
+    <ClInclude Include="WanderBehavior.h" />
     <ClInclude Include="WatchBehavior.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
