@@ -16,8 +16,11 @@ int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	int screenWidth = 800;
-	int screenHeight = 450;
+	int screenWidth = 1920;
+	int screenHeight = 1080;
+	
+	InitWindow(screenWidth, screenHeight, "The Persons");
+
 	//to use a graph first create one
 	Graph graph;
 	//Then call the creatGraph function and add the number of nodes you want in the list
@@ -26,7 +29,6 @@ int main()
 	//If the coordinates aren't in the list this will error so be careful here
 	graph.AStarSearch({ 0,0 }, { 4,4 });
 	//to draw the graph call the draw function in the while loop below
-	InitWindow(screenWidth, screenHeight, "The Persons");
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -44,7 +46,7 @@ int main()
 		//----------------------------------------------------------------------------------
 		BeginDrawing();
 		//Add how far apart the nodes should be here
-		graph.draw(20);
+		//graph.draw(150);
 		ClearBackground(RAYWHITE);
 
 		EndDrawing();

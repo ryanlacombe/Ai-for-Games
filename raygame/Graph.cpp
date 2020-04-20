@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include <math.h>
+
 Graph::Graph()
 {
 }

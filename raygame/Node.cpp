@@ -31,21 +31,21 @@ void Node::Draw(float scale)
 	if (isStartNode)
 	{
 		colorEdge();
-		DrawRectangle(position.x * scale, position.y * scale, 10, 10, BLUE);
+		DrawRectangle(position.x * scale, position.y * scale, 100, 100, BLUE);
 	}
 	else if (isPathNode)
 	{
 		colorEdge();
-		DrawRectangle(position.x * scale, position.y * scale, 10, 10, YELLOW);
+		DrawRectangle(position.x * scale, position.y * scale, 100, 100, YELLOW);
 	}
 	else if (isGoalNode)
 	{
 		colorEdge();
-		DrawRectangle(position.x * scale, position.y * scale, 10, 10, GREEN);
+		DrawRectangle(position.x * scale, position.y * scale, 100, 100, GREEN);
 	}
 	else
 	{
-		DrawRectangle(position.x * scale, position.y * scale, 10, 10, RED);
+		DrawRectangle(position.x * scale, position.y * scale, 100, 100, RED);
 	}
 	//loop through list of edges and call draw on them
 	for (std::vector<Edge*>::iterator iter = edges.begin(); iter != edges.end(); ++iter)
