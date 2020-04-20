@@ -37,18 +37,35 @@ public:
 	Color getColor() { return m_color; }
 
 	//Need functions
+	int setHunger(int hunger) { m_hunger = hunger; }
 	int getHunger() { return m_hunger; }
+	int setThirst(int thirst) { m_thirst = thirst; }
 	int getThirst() { return m_thirst; }
+	int setSleep(int sleep) { m_sleep = sleep; }
 	int getSleep() { return m_sleep; }
+	int setSocial(int social) { m_social = social; }
 	int getSocial() { return m_social; }
-	int getEntertainment() { return m_entertianment; }
+	int setEntertainment(int entertainment) { m_entertainment = entertainment; }
+	int getEntertainment() { return m_entertainment; }
 
 	//Need Decay functions
 	int setHungerDecay(int hungerDecay) { m_hungerDecay = hungerDecay; }
+	int getHungerDecay() { return m_hungerDecay; }
 	int setThirstDecay(int thirstDecay) { m_thirstDecay = thirstDecay; }
+	int getThirstDecay() { return m_thirstDecay; }
 	int setSleepDecay(int sleepDecay) { m_sleepDecay = sleepDecay; }
+	int getSleepDecay() { return m_sleepDecay; }
 	int setSocialDecay(int socialDecay) { m_socialDecay = socialDecay; }
+	int getSocialDecay() { return m_socialDecay; }
 	int setEntertainmentDecay(int entertainmentDecay) { m_entertainmentDecay = entertainmentDecay; }
+	int getEntertainmentDecay() { return m_entertainmentDecay; }
+
+	//Intializes public variables
+	int m_startHunger = 100;
+	int m_startThirst = 100;
+	int m_startSleep = 100;
+	int m_startSocial = 100;
+	int m_startEntertainment = 100;
 
 protected:
 	std::vector<Behavior*> m_behaviorList;
@@ -60,16 +77,11 @@ protected:
 	Color m_color = MAROON;
 
 	//Intializes all the needs and decay rates for the agent
-	int m_startHunger = 100;
-	int m_startThirst = 100;
-	int m_startSleep = 100;
-	int m_startSocial = 100;
-	int m_startEntertianment = 100;
 	int m_hunger = m_startHunger;
 	int m_thirst = m_startThirst;
 	int m_sleep = m_startSleep;
 	int m_social = m_startSocial;
-	int m_entertianment = m_startEntertianment;
+	int m_entertainment = m_startEntertianment;
 	int m_hungerDecay = 5;
 	int m_thirstDecay = 5;
 	int m_sleepDecay = 5;

@@ -359,6 +359,11 @@
                 return Vector2{ x * rhs, y * rhs };
             }
 
+            bool operator ==(Vector2 rhs)
+            {
+                return true;
+            }
+
             float magnitude()
             {
                 return sqrt((x * x) + (y * y));

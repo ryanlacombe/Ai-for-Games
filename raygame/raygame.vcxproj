@@ -132,19 +132,39 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="BehaviorDecision.cpp" />
+    <ClCompile Include="BooleanDecision.cpp" />
+    <ClCompile Include="DecisionTreeBehavior.cpp" />
+    <ClCompile Include="DrinkBehavior.cpp" />
+    <ClCompile Include="EatBehavior.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="IsNeedyCondition.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="SleepBehavior.cpp" />
+    <ClCompile Include="SocialBehavior.cpp" />
+    <ClCompile Include="WatchBehavior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Behavior.h" />
+    <ClInclude Include="BehaviorDecision.h" />
+    <ClInclude Include="BooleanDecision.h" />
+    <ClInclude Include="Condition.h" />
+    <ClInclude Include="Decision.h" />
+    <ClInclude Include="DecisionTreeBehavior.h" />
+    <ClInclude Include="DrinkBehavior.h" />
+    <ClInclude Include="EatBehavior.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="IsNeedyCondition.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="SleepBehavior.h" />
+    <ClInclude Include="SocialBehavior.h" />
+    <ClInclude Include="WatchBehavior.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
