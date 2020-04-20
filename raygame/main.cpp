@@ -10,6 +10,7 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "Graph.h"
 
 int main()
 {
@@ -17,15 +18,23 @@ int main()
 	//--------------------------------------------------------------------------------------
 	int screenWidth = 800;
 	int screenHeight = 450;
-
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+	//to use a graph first create one
+	Graph graph;
+	//Then call the creatGraph function and add the number of nodes you want in the list
+	graph.createGraph(25);
+	//Next, to test a star, call the AStarSearch function and add the coordinates of the starting and then the ending node
+	//If the coordinates aren't in the list this will error so be careful here
+	graph.AStarSearch({ 0,0 }, { 4,4 });
+	//to draw the graph call the draw function in the while loop below
+	InitWindow(screenWidth, screenHeight, "The Persons");
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
-
+	float deltaTime;
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
+		deltaTime = GetFrameTime();
 		// Update
 		//----------------------------------------------------------------------------------
 		// TODO: Update your variables here
@@ -34,10 +43,9 @@ int main()
 		// Draw
 		//----------------------------------------------------------------------------------
 		BeginDrawing();
-
+		//Add how far apart the nodes should be here
+		graph.draw(20);
 		ClearBackground(RAYWHITE);
-
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
