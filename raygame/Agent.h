@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include <vector>
+#include "Stat.h"
 
 class Behavior;
 
@@ -9,8 +10,8 @@ class Agent
 public:
 	Agent(int startHunger, int startThirst, int startSleep, int startSocial, int startEntertainment) 
 	{
-		m_startHunger = startHunger, m_startThirst = startThirst, m_startSleep = startSleep,
-			m_startSocial = m_startSocial, m_startEntertainment = startEntertainment;
+		m_startHunger = new Stat(startHunger), m_startThirst = new Stat(startThirst), m_startSleep = new Stat(startSleep),
+			m_startSocial = new Stat(startSocial), m_startEntertainment = new Stat(startEntertainment);
 	}
 	virtual ~Agent() {}
 
@@ -40,18 +41,6 @@ public:
 	void setColor(Color color) { m_color = color; }
 	Color getColor() { return m_color; }
 
-	//Need functions
-	void setHunger(int hunger) { m_hunger = hunger; }
-	int getHunger() { return m_hunger; }
-	void setThirst(int thirst) { m_thirst = thirst; }
-	int getThirst() { return m_thirst; }
-	void setSleep(int sleep) { m_sleep = sleep; }
-	int getSleep() { return m_sleep; }
-	void setSocial(int social) { m_social = social; }
-	int getSocial() { return m_social; }
-	void setEntertainment(int entertainment) { m_entertainment = entertainment; }
-	int getEntertainment() { return m_entertainment; }
-
 	//Need Decay functions
 	void setHungerDecay(int hungerDecay) { m_hungerDecay = hungerDecay; }
 	int getHungerDecay() { return m_hungerDecay; }
@@ -65,11 +54,11 @@ public:
 	int getEntertainmentDecay() { return m_entertainmentDecay; }
 
 	//Intializes public variables
-	int m_startHunger = 100;
-	int m_startThirst = 100;
-	int m_startSleep = 100;
-	int m_startSocial = 100;
-	int m_startEntertainment = 100;
+	Stat* m_startHunger;
+	Stat* m_startThirst;
+	Stat* m_startSleep;
+	Stat* m_startSocial;
+	Stat* m_startEntertainment;
 
 protected:
 	std::vector<Behavior*> m_behaviorList;
@@ -81,11 +70,6 @@ protected:
 	Color m_color = MAROON;
 
 	//Intializes all the needs and decay rates for the agent
-	int m_hunger = m_startHunger;
-	int m_thirst = m_startThirst;
-	int m_sleep = m_startSleep;
-	int m_social = m_startSocial;
-	int m_entertainment = m_startEntertainment;
 	int m_hungerDecay = 1;
 	int m_thirstDecay = 1;
 	int m_sleepDecay = 1;

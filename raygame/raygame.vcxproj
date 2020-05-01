@@ -145,7 +145,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ScreenEdgeBehavior.cpp" />
     <ClCompile Include="SleepBehavior.cpp" />
-    <ClCompile Include="SocialBehavior.cpp" />
+    <ClCompile Include="Stat.cpp" />
     <ClCompile Include="WanderBehavior.cpp" />
     <ClCompile Include="WatchBehavior.cpp" />
   </ItemGroup>
@@ -166,7 +166,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ScreenEdgeBehavior.h" />
     <ClInclude Include="SleepBehavior.h" />
-    <ClInclude Include="SocialBehavior.h" />
+    <ClInclude Include="Stat.h" />
     <ClInclude Include="WanderBehavior.h" />
     <ClInclude Include="WatchBehavior.h" />
   </ItemGroup>

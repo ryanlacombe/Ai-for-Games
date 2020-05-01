@@ -1,9 +1,9 @@
 #include "IsNeedyCondition.h"
+#include "raymath.h"
 
 bool IsNeedyCondition::test(Agent* agent) const
-{
-	if (agent->getHunger() < (agent->m_startHunger / 2) || agent->getThirst() < (agent->m_startThirst / 2) || agent->getSleep() < (agent->m_startSleep / 2) || agent->getSocial() < (agent->m_startSocial / 2)
-		|| agent->getEntertainment() < (agent->m_startEntertainment / 2))
+ {
+	if (m_needCheck->currentStat <= (m_needCheck->needStart / 2))
 	{
 		//Get the target postion
 		Vector2 targetPos = m_agentCheck->getPosition();
@@ -12,10 +12,14 @@ bool IsNeedyCondition::test(Agent* agent) const
 		Vector2 pos = agent->getPosition();
 
 		//Find the distance
-		float distance = (targetPos - pos).magnitude();
+		float distance = Vector2Distance(targetPos, pos);
 
 		//Return the result
 		return distance <= m_range;
 	}
 	
+	else
+	{
+		return false;
+	}
 }

@@ -1,21 +1,8 @@
 #include "DrinkBehavior.h"
+#include "raymath.h"
 
 void DrinkBehavior::update(Agent* agent, float deltaTime)
 {
-	//If all needs are over 50%
-	if (agent->getHunger() >= (agent->m_startHunger / 2) && agent->getThirst() >= (agent->m_startThirst / 2) && agent->getSleep() >= (agent->m_startSleep / 2) && agent->getSocial() >= (agent->m_startSocial / 2)
-		&& agent->getEntertainment() >= (agent->m_startEntertainment / 2))
-	{
-		//If the target or agent is null
-		if (agent == nullptr || m_target == nullptr)
-		{
-			//Return a zero vector
-			return;
-		}
-		//End
-		return;
-	}
-
 	int savedDecay = agent->getThirstDecay();
 
 	//Get this agent's position
@@ -34,16 +21,18 @@ void DrinkBehavior::update(Agent* agent, float deltaTime)
 	//Return the force
 	agent->addForce(force * deltaTime);
 
-	if (agent->getPosition() == m_target->getPosition())
+	float distance = Vector2Distance(targetPos, pos);
+
+	if (distance <= 50)
 	{
-		int thirstRefill = agent->getThirst();
+		int thirstRefill = agent->m_startThirst->currentStat;
 		//Temporarilly set the decay to 0
 		agent->setThirstDecay(0);
 		//While the current need is below the maximum
-		while (agent->getThirst() < agent->m_startThirst)
+		while (agent->m_startThirst->currentStat < agent->m_startThirst->needStart)
 		{
 			thirstRefill++;
-			agent->setThirst(thirstRefill);
+			agent->m_startThirst->currentStat = thirstRefill;
 		}
 		agent->setThirstDecay(savedDecay);
 	}

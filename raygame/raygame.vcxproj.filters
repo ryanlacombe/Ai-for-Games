@@ -54,9 +54,6 @@
     <ClCompile Include="SleepBehavior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SocialBehavior.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WatchBehavior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -64,6 +61,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ScreenEdgeBehavior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,9 +113,6 @@
     <ClInclude Include="SleepBehavior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SocialBehavior.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WatchBehavior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ScreenEdgeBehavior.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

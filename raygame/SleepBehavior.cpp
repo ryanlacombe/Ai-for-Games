@@ -2,20 +2,6 @@
 
 void SleepBehavior::update(Agent* agent, float deltaTime)
 {
-	//If all needs are over 50%
-	if (agent->getHunger() >= (agent->m_startHunger / 2) && agent->getThirst() >= (agent->m_startThirst / 2) && agent->getSleep() >= (agent->m_startSleep / 2) && agent->getSocial() >= (agent->m_startSocial / 2)
-		&& agent->getEntertainment() >= (agent->m_startEntertainment / 2))
-	{
-		//If the target or agent is null
-		if (agent == nullptr || m_target == nullptr)
-		{
-			//Return a zero vector
-			return;
-		}
-		//End
-		return;
-	}
-
 	int savedDecay = agent->getSleepDecay();
 
 	//Get this agent's position
@@ -36,14 +22,14 @@ void SleepBehavior::update(Agent* agent, float deltaTime)
 
 	if (agent->getPosition() == m_target->getPosition())
 	{
-		int sleepRefill = agent->getSleep();
+		int sleepRefill = agent->m_startSleep->currentStat;
 		//Temporarilly set the decay to 0
 		agent->setSleepDecay(0);
 		//While the current need is below the maximum
-		while (agent->getSleep() < agent->m_startSleep)
+		while (agent->m_startSleep->currentStat < agent->m_startSleep->needStart)
 		{
 			sleepRefill++;
-			agent->setSleep(sleepRefill);
+			agent->m_startSleep->currentStat = sleepRefill;
 		}
 		agent->setSleepDecay(savedDecay);
 	}

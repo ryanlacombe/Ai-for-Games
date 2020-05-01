@@ -20,7 +20,6 @@
 #include "DrinkBehavior.h"
 #include "BooleanDecision.h"
 #include "SleepBehavior.h"
-#include "SocialBehavior.h"
 #include "WatchBehavior.h"
 #include "ScreenEdgeBehavior.h"
 
@@ -102,12 +101,14 @@ int main()
 	WatchBehavior* watchBehavior = new WatchBehavior();
 	watchBehavior->setTarget(tv);
 	BehaviorDecision* watchDecision = new BehaviorDecision(watchBehavior);
+	
 
+	
 	//Creation of the branches
-	IsNeedyCondition* nickIsHungryCondition = new IsNeedyCondition(nick);
+	IsNeedyCondition* nickIsHungryCondition = new IsNeedyCondition(nick, 1000, nick->m_startHunger);
 	BooleanDecision* nickIsHungryDecision = new BooleanDecision(eatDecision, wanderDecision, nickIsHungryCondition);
-	IsNeedyCondition* nickIsThirstyCondition = new IsNeedyCondition(nick);
-	BooleanDecision* nickIsThirstyDecision = new BooleanDecision(wanderDecision, drinkDecision, nickIsThirstyCondition);
+	IsNeedyCondition* nickIsThirstyCondition = new IsNeedyCondition(nick, 1000, nick->m_startThirst);
+	BooleanDecision* nickIsThirstyDecision = new BooleanDecision(drinkDecision, nickIsHungryDecision, nickIsThirstyCondition);
 
 	DecisionTreeBehavior* nickDecisionTree = new DecisionTreeBehavior(nickIsThirstyDecision);
 	nick->addBehavior(nickDecisionTree);

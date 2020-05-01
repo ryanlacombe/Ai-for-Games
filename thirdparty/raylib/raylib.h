@@ -361,7 +361,7 @@
 
             bool operator ==(Vector2 rhs)
             {
-                return true;
+                return x == rhs.x && y == rhs.y;
             }
 
             float magnitude()

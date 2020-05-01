@@ -1,23 +1,9 @@
 #include "EatBehavior.h"
+#include "raymath.h"
 
 void EatBehavior::update(Agent* agent, float deltaTime)
 {
-	//If all needs are over 50%
-	if (agent->getHunger() >= (agent->m_startHunger / 2) && agent->getThirst() >= (agent->m_startThirst / 2) && agent->getSleep() >= (agent->m_startSleep / 2) && agent->getSocial() >= (agent->m_startSocial / 2)
-		&& agent->getEntertainment() >= (agent->m_startEntertainment / 2))
-	{
-		//If the target or agent is null
-		if (agent == nullptr || m_target == nullptr) 
-		{
-			//Return a zero vector
-			return;
-		}
-		//End
-		return;
-	}
-
-	else if (agent->getHunger() < (agent->m_startHunger / 2))
-	{
+	
 		int savedDecay = agent->getHungerDecay();
 
 		//Get this agent's position
@@ -36,19 +22,21 @@ void EatBehavior::update(Agent* agent, float deltaTime)
 		//Return the force
 		agent->addForce(force * deltaTime);
 
-		if (pos == targetPos)
+		float distance = Vector2Distance(targetPos, pos);
+
+		if (distance <= 50)
 		{
-			int hungerRefill = agent->getHunger();
+			int hungerRefill = agent->m_startHunger->currentStat;
 			//Temporarilly set the decay to 0
 			agent->setHungerDecay(0);
 			//While the current need is below the maximum
-			while (agent->getHunger() < agent->m_startHunger)
+			while (agent->m_startHunger->currentStat < agent->m_startHunger->needStart)
 			{
 				hungerRefill++;
-				agent->setHunger(hungerRefill);
+				agent->m_startHunger->currentStat = hungerRefill;
 			}
 			agent->setHungerDecay(savedDecay);
 		}
+
 		return;
-	}
 }

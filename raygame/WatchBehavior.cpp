@@ -2,20 +2,6 @@
 
 void WatchBehavior::update(Agent* agent, float deltaTime)
 {
-	//If all needs are over 50%
-	if (agent->getHunger() >= (agent->m_startHunger / 2) && agent->getThirst() >= (agent->m_startThirst / 2) && agent->getSleep() >= (agent->m_startSleep / 2) && agent->getSocial() >= (agent->m_startSocial / 2)
-		&& agent->getEntertainment() >= (agent->m_startEntertainment / 2))
-	{
-		//If the target or agent is null
-		if (agent == nullptr || m_target == nullptr)
-		{
-			//Return a zero vector
-			return;
-		}
-		//End
-		return;
-	}
-
 	int savedDecay = agent->getEntertainmentDecay();
 
 	//Get this agent's position
@@ -36,14 +22,14 @@ void WatchBehavior::update(Agent* agent, float deltaTime)
 
 	if (agent->getPosition() == m_target->getPosition())
 	{
-		int entertainmentRefill = agent->getEntertainment();
+		int entertainmentRefill = agent->m_startEntertainment->currentStat;
 		//Temporarilly set the decay to 0
 		agent->setEntertainmentDecay(0);
 		//While the current need is below the maximum
-		while (agent->getEntertainment() < agent->m_startEntertainment)
+		while (agent->m_startEntertainment->currentStat < agent->m_startEntertainment->needStart)
 		{
 			entertainmentRefill++;
-			agent->setEntertainment(entertainmentRefill);
+			agent->m_startEntertainment->currentStat = entertainmentRefill;
 		}
 		agent->setEntertainmentDecay(savedDecay);
 	}
