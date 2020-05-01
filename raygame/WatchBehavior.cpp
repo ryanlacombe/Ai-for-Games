@@ -1,4 +1,5 @@
 #include "WatchBehavior.h"
+#include "raymath.h"
 
 void WatchBehavior::update(Agent* agent, float deltaTime)
 {
@@ -20,7 +21,9 @@ void WatchBehavior::update(Agent* agent, float deltaTime)
 	//Return the force
 	agent->addForce(force * deltaTime);
 
-	if (agent->getPosition() == m_target->getPosition())
+	float distance = Vector2Distance(targetPos, pos);
+
+	if (distance <= 50)
 	{
 		int entertainmentRefill = agent->m_startEntertainment->currentStat;
 		//Temporarilly set the decay to 0

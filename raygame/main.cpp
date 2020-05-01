@@ -104,15 +104,57 @@ int main()
 	
 
 	
-	//Creation of the branches
-	IsNeedyCondition* nickIsHungryCondition = new IsNeedyCondition(nick, 1000, nick->m_startHunger);
-	BooleanDecision* nickIsHungryDecision = new BooleanDecision(eatDecision, wanderDecision, nickIsHungryCondition);
+	//Nick's Decision Tree
+	IsNeedyCondition* nickIsBoredCondition = new IsNeedyCondition(nick, 1000, nick->m_startEntertainment);
+	BooleanDecision* nickIsBoredDecision = new BooleanDecision(watchDecision, wanderDecision, nickIsBoredCondition);
+	IsNeedyCondition* nickIsSleepyCondition = new IsNeedyCondition(nick, 1000, nick->m_startSleep);
+	BooleanDecision* nickIsSleepyDecision = new BooleanDecision(sleepDecision, nickIsBoredDecision, nickIsSleepyCondition);
 	IsNeedyCondition* nickIsThirstyCondition = new IsNeedyCondition(nick, 1000, nick->m_startThirst);
-	BooleanDecision* nickIsThirstyDecision = new BooleanDecision(drinkDecision, nickIsHungryDecision, nickIsThirstyCondition);
+	BooleanDecision* nickIsThirstyDecision = new BooleanDecision(drinkDecision, nickIsSleepyDecision, nickIsThirstyCondition);
+	IsNeedyCondition* nickIsHungryCondition = new IsNeedyCondition(nick, 1000, nick->m_startHunger);
+	BooleanDecision* nickIsHungryDecision = new BooleanDecision(eatDecision, nickIsThirstyDecision, nickIsHungryCondition);
 
-	DecisionTreeBehavior* nickDecisionTree = new DecisionTreeBehavior(nickIsThirstyDecision);
+	DecisionTreeBehavior* nickDecisionTree = new DecisionTreeBehavior(nickIsHungryDecision);
 	nick->addBehavior(nickDecisionTree);
 
+	//Carlos' Decision Tree
+	IsNeedyCondition* carlosIsSleepyCondition = new IsNeedyCondition(carlos, 1000, carlos->m_startSleep);
+	BooleanDecision* carlosIsSleepyDecision = new BooleanDecision(sleepDecision, wanderDecision, carlosIsSleepyCondition);
+	IsNeedyCondition* carlosIsThirstyCondition = new IsNeedyCondition(carlos, 1000, carlos->m_startThirst);
+	BooleanDecision* carlosIsThirstyDecision = new BooleanDecision(drinkDecision, carlosIsSleepyDecision, carlosIsThirstyCondition);
+	IsNeedyCondition* carlosIsHungryCondition = new IsNeedyCondition(carlos, 1000, carlos->m_startHunger);
+	BooleanDecision* carlosIsHungryDecision = new BooleanDecision(eatDecision, carlosIsThirstyDecision, carlosIsHungryCondition);
+	IsNeedyCondition* carlosIsBoredCondition = new IsNeedyCondition(carlos, 1000, carlos->m_startEntertainment);
+	BooleanDecision* carlosIsBoredDecision = new BooleanDecision(watchDecision, carlosIsHungryDecision, carlosIsBoredCondition);
+
+	DecisionTreeBehavior* carlosDecisionTree = new DecisionTreeBehavior(carlosIsBoredDecision);
+	carlos->addBehavior(carlosDecisionTree);
+
+	//Marie's Decision Tree
+	IsNeedyCondition* marieIsHungryCondition = new IsNeedyCondition(marie, 1000, marie->m_startHunger);
+	BooleanDecision* marieIsHungryDecision = new BooleanDecision(eatDecision, wanderDecision, marieIsHungryCondition);
+	IsNeedyCondition* marieIsBoredCondition = new IsNeedyCondition(marie, 1000, marie->m_startEntertainment);
+	BooleanDecision* marieIsBoredDecision = new BooleanDecision(watchDecision, marieIsHungryDecision, marieIsBoredCondition);
+	IsNeedyCondition* marieIsThirstyCondition = new IsNeedyCondition(marie, 1000, marie->m_startThirst);
+	BooleanDecision* marieIsThirstyDecision = new BooleanDecision(drinkDecision, marieIsBoredDecision, marieIsThirstyCondition);
+	IsNeedyCondition* marieIsSleepyCondition = new IsNeedyCondition(marie, 1000, marie->m_startSleep);
+	BooleanDecision* marieIsSleepyDecision = new BooleanDecision(sleepDecision, marieIsThirstyDecision, marieIsSleepyCondition);
+
+	DecisionTreeBehavior* marieDecisionTree = new DecisionTreeBehavior(marieIsSleepyDecision);
+	marie->addBehavior(marieDecisionTree);
+
+	//Sera's Decision Tree
+	IsNeedyCondition* seraIsBoredCondition = new IsNeedyCondition(sera, 1000, sera->m_startEntertainment);
+	BooleanDecision* seraIsBoredDecision = new BooleanDecision(watchDecision, wanderDecision, seraIsBoredCondition);
+	IsNeedyCondition* seraIsSleepyCondition = new IsNeedyCondition(sera, 1000, sera->m_startSleep);
+	BooleanDecision* seraIsSleepyDecision = new BooleanDecision(sleepDecision, seraIsBoredDecision, seraIsSleepyCondition);
+	IsNeedyCondition* seraIsHungryCondition = new IsNeedyCondition(sera, 1000, sera->m_startHunger);
+	BooleanDecision* seraIsHungryDecision = new BooleanDecision(eatDecision, seraIsSleepyDecision, seraIsHungryCondition);
+	IsNeedyCondition* seraIsThirstyCondition = new IsNeedyCondition(sera, 1000, sera->m_startThirst);
+	BooleanDecision* seraIsThirstyDecision = new BooleanDecision(drinkDecision, seraIsHungryDecision, seraIsThirstyCondition);
+
+	DecisionTreeBehavior* seraDecisionTree = new DecisionTreeBehavior(seraIsThirstyDecision);
+	sera->addBehavior(seraDecisionTree);
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------

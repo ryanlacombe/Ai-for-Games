@@ -1,4 +1,5 @@
 #include "SleepBehavior.h"
+#include "raymath.h"
 
 void SleepBehavior::update(Agent* agent, float deltaTime)
 {
@@ -20,7 +21,9 @@ void SleepBehavior::update(Agent* agent, float deltaTime)
 	//Return the force
 	agent->addForce(force * deltaTime);
 
-	if (agent->getPosition() == m_target->getPosition())
+	float distance = Vector2Distance(targetPos, pos);
+
+	if (distance <= 50)
 	{
 		int sleepRefill = agent->m_startSleep->currentStat;
 		//Temporarilly set the decay to 0
